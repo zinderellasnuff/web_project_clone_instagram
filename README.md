@@ -1,81 +1,54 @@
-# Web Project Clone Instagram
+Clon de instagram
 
-Este es un proyecto en desarrollo cuyo objetivo es clonar la funcionalidad básica de Instagram utilizando React. Actualmente, la aplicación incluye un sistema de autenticación de usuario (inicio de sesión y registro) y una vista de dashboard para usuarios autenticados. Se está utilizando Firebase para la gestión de la autenticación y el almacenamiento de datos en la nube.
+Este proyecto es un clon de la famosa aplicación de Instagram. Fue creado utilizando React para el frontend, y Firebase para el backend, lo que permite la autenticación de usuarios, el almacenamiento de datos y la gestión de perfiles. El diseño está inspirado en la interfaz de Instagram, ofreciendo una experiencia similar para compartir imágenes y realizar interacciones sociales.
+Tecnologías utilizadas
 
-## Estado del Proyecto
+    Interfaz:
+        React : Framework para construir la interfaz de usuario.
+        React Router : Manejo de rutas para la navegación entre las páginas.
+        Tailwind CSS : Utilizado para el diseño y el estilo de la interfaz.
+        Firebase : Para la autenticación de usuarios, la base de datos y el almacenamiento de archivos. 
 
-Este proyecto aún está en desarrollo. Actualmente, se han implementado las siguientes características:
+    Parte trasera:
+        Firebase Authentication : Para gestionar el inicio de sesión y registro de usuarios.
+        Firebase Firestore: Base de datos en tiempo real para almacenar la información del usuario.
+        Firebase Storage : Para guardar las imágenes subidas por los usuarios. 
 
-- **Autenticación de usuarios**: Funcionalidades de inicio de sesión y registro.
-- **Navegación entre páginas**: Usando `react-router-dom` para gestionar las rutas.
-- **Estructura basada en React**: Se ha implementado con React, utilizando carga perezosa de componentes (`React.lazy`).
-- **Backend con Firebase**: Autenticación y gestión de datos en la nube.
+Características
 
-## Características
+    Autenticación de usuarios : Los usuarios pueden registrarse e iniciar sesión usando correo electrónico y contraseña.
+    Gestión de perfiles : Los usuarios pueden editar su nombre de usuario, foto de perfil y otras configuraciones.
+    Publicación de imágenes : Los usuarios pueden subir imágenes y compartirlas con sus seguidores.
+    Dashboard : Los usuarios pueden ver un feed de publicaciones de las personas a las que siguen.
+    Páginas de error : Manejo de errores con una página personalizada para el error 404. 
 
-- **Inicio de sesión (Login)**: Los usuarios pueden iniciar sesión con su cuenta de correo electrónico y contraseña.
-- **Registro de usuario (SignUp)**: Los usuarios pueden crear una cuenta para acceder a la plataforma.
-- **Dashboard**: Los usuarios autenticados tienen acceso a su panel de control personal.
-- **Firebase Authentication**: Se utiliza Firebase para la autenticación de los usuarios.
-- **Manejo de rutas**: Utiliza `react-router-dom` para la gestión de rutas y vistas en la aplicación.
-- **Carga perezosa (Lazy Loading)**: Se implementa con `React.lazy` para mejorar el rendimiento al cargar componentes solo cuando son necesarios.
-- **Contexto de usuario (UserContext)**: La Context API maneja el estado global del usuario a través de la aplicación.
-- **Estilo modular**: Se emplean estilos CSS modulares para una estructura más limpia y expansible.
+Instalación
 
-## Tecnologías utilizadas
+    Clona este repositorio:
 
-- **React**: Framework de JavaScript para construir interfaces de usuario interactivas.
-- **React Router**: Manejo de la navegación entre páginas.
-- **React Suspense**: Implementación de carga perezosa de componentes.
-- **Firebase**: Plataforma para la autenticación de usuarios y gestión de datos en la nube.
-- **Context API**: Para manejar el estado global del usuario y compartirlo entre los diferentes componentes de la aplicación.
-- **CSS**: Para el diseño y estilo de la interfaz de usuario.
+git clone https://github.com/zinderellasnuff/web_project_clone_instagram.git
 
-## Estructura del Proyecto
+Accede a la carpeta del proyecto:
 
-src/
-├── components/
-│   ├── post/
-│   ├── profile/
-│   ├── sidebar/
-│   │   ├── Header.jsx
-│   │   └── Timeline.jsx
-├── constants/
-│   ├── paths.js
-│   └── routes.js
-├── context/
-│   ├── FirebaseProvider.jsx
-│   ├── UserProvider.jsx
-│   ├── firebase.js
-│   └── user.js
-├── helpers/
-│   ├── IsUserLoggedIn.jsx
-│   └── ProtectedRoute.jsx
-├── hooks/
-│   ├── useFirebase.js
-│   ├── usePhotos.js
-│   └── useUser.js
-├── lib/
-│   └── firebaseConfig.js
-├── pages/
-│   ├── Dashboard.jsx
-│   ├── Login.jsx
-│   ├── NotFound.jsx
-│   ├── Profile.jsx
-│   └── SignUp.jsx
-└── services/
-├── App.jsx
-├── index.css
-├── main.jsx
-└── seed.js
+cd web_project_clone_instagram
 
-public/
-└── images/ <-- Aquí se almacenan las imágenes para la aplicación.
+Instala las dependencias:
 
+npm install
 
-## Instalación
+Crea un proyecto en Firebase y configura los servicios de autenticación y Firestore.
 
-1. Clona el repositorio:
+Crea un archivo .env en la raíz del proyecto y agrega las credenciales de Firebase que obtuviste en el paso anterior:
 
-   ```bash
-   git clone https://github.com/tu-usuario/instagram-clone.git
+REACT_APP_API_KEY=your-api-key
+REACT_APP_AUTH_DOMAIN=your-auth-domain
+REACT_APP_PROJECT_ID=your-project-id
+REACT_APP_STORAGE_BUCKET=your-storage-bucket
+REACT_APP_MESSAGING_SENDER_ID=your-messaging-sender-id
+REACT_APP_APP_ID=your-app-id
+
+Inicia el servidor de desarrollo:
+
+    npm start
+
+    Abra http ://localhost :3000 en su navegador. 
