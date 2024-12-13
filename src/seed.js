@@ -1,8 +1,9 @@
-// seed.js
-export function seedDatabase(firebase) {
+import { collection, doc, getDoc, setDoc } from "firebase/firestore";
+
+export async function seedDatabase(firestore) {
   const users = [
     {
-      userId: "D4Go0DLQaWPswozV1ITu8gsaMwm2",
+      userId: "Dv7ADrBh0qYNMoSVkVKkPPMtodw2",
       username: "sameer",
       fullName: "Sameer Kapadia",
       emailAddress: "kapadia.sameer1@gmail.com",
@@ -13,10 +14,10 @@ export function seedDatabase(firebase) {
     {
       userId: "2",
       username: "karlos",
-      fullName: "Karlos finlay",
+      fullName: "Karlos Finlay",
       emailAddress: "karlos@finlay.com",
       following: [],
-      followers: ["D4Go0DLQaWPswozV1ITu8gsaMwm2"],
+      followers: ["Dv7ADrBh0qYNMoSVkVKkPPMtodw2"],
       dateCreated: Date.now(),
     },
     {
@@ -25,7 +26,7 @@ export function seedDatabase(firebase) {
       fullName: "Daniel Salvador",
       emailAddress: "daniel@salvador.com",
       following: [],
-      followers: ["D4Go0DLQaWPswozV1ITu8gsaMwm2"],
+      followers: ["Dv7ADrBh0qYNMoSVkVKkPPMtodw2"],
       dateCreated: Date.now(),
     },
     {
@@ -34,7 +35,7 @@ export function seedDatabase(firebase) {
       fullName: "Stefan George",
       emailAddress: "stefan@george.com",
       following: [],
-      followers: ["D4Go0DLQaWPswozV1ITu8gsaMwm2"],
+      followers: ["Dv7ADrBh0qYNMoSVkVKkPPMtodw2"],
       dateCreated: Date.now(),
     },
   ];
@@ -99,20 +100,20 @@ export function seedDatabase(firebase) {
   ];
 
   // Agrega los usuarios, evitando duplicados
-  users.forEach(async (user) => {
-    const userRef = firebase.firestore().collection("users").doc(user.userId);
-    const doc = await userRef.get();
-    if (!doc.exists) {
-      await userRef.set(user);
+  for (const user of users) {
+    const userRef = doc(collection(firestore, "users"), user.userId);
+    const docSnap = await getDoc(userRef);
+    if (!docSnap.exists()) {
+      await setDoc(userRef, user);
     }
-  });
+  }
 
   // Agrega fotos, evitando duplicados
-  photos.forEach(async (photo) => {
-    const photoRef = firebase.firestore().collection("photos").doc(photo.photoId.toString());
-    const doc = await photoRef.get();
-    if (!doc.exists) {
-      await photoRef.set(photo);
+  for (const photo of photos) {
+    const photoRef = doc(collection(firestore, "photos"), photo.photoId.toString());
+    const docSnap = await getDoc(photoRef);
+    if (!docSnap.exists()) {
+      await setDoc(photoRef, photo);
     }
-  });
+  }
 }
